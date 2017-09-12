@@ -10,7 +10,7 @@ Features
 * Composer installed
 * Git installed (needed sometimes by Composer)
 * MySQL client installed
-* PHP Extensions installed: iconv mcrypt xsl intl zip pdo_mysql gd
+* PHP Extensions installed: iconv mcrypt xsl intl zip pdo_mysql gd opcache
 
 Credits
 -------
