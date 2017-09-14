@@ -7,10 +7,8 @@ Features
 --------
 
 * Starts from official PHP Docker image
-* Composer installed
-* Git installed (needed sometimes by Composer)
-* MySQL client installed
-* PHP Extensions installed: iconv mcrypt xsl intl zip pdo_mysql gd opcache
+* PHP Extensions installed: iconv mcrypt xsl intl zip pdo_mysql gd opcache imagick pcntl soap
+* Other utilities installed: composer, git, mysql client, wget, unzip, nodejs & npm
 
 Credits
 -------
