@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 							libmagickwand-dev \
 							libmagickcore-dev \
 							wget \
-							unzip\
+							unzip \
                                                         zip
 
 RUN docker-php-ext-install -j$(nproc) iconv mcrypt xsl intl zip pdo_mysql opcache pcntl soap
