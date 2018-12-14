@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 							unzip \
                             zip \
                             gnupg \
-                            procps
+                            procps \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) iconv mcrypt xsl intl zip pdo_mysql opcache pcntl soap bcmath
