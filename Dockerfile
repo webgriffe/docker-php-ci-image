@@ -16,6 +16,13 @@ RUN apt-get update && apt-get install -y \
                             zip \
                             gnupg \
                             procps \
+			    xvfb \
+			    libgtk2.0-0 \
+			    libnotify-dev \
+			    libgconf-2-4 \
+			    libnss3 \
+			    libxss1 \
+			    libasound2 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) iconv mcrypt xsl intl zip pdo_mysql opcache pcntl soap bcmath
