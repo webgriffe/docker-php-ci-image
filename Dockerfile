@@ -1,6 +1,8 @@
 FROM php:7.1
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
     && apt-get install -y \
         libfreetype6-dev \
@@ -26,6 +28,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
         libxss1 \
         libasound2 \
         nodejs \
+        yarn \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) \
