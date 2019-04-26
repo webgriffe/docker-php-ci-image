@@ -1,4 +1,4 @@
-FROM php:7.1
+FROM php:7.2
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     && apt-get update \
@@ -30,7 +30,6 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
 
 RUN docker-php-ext-install -j$(nproc) \
         iconv \
-        mcrypt \
         xsl \
         intl \
         zip \
