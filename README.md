@@ -7,8 +7,8 @@ Features
 --------
 
 * Starts from official PHP Docker image.
-* PHP Extensions installed: iconv mcrypt xsl intl zip pdo_mysql gd opcache imagick pcntl soap bcmath
-* Other utilities installed: composer, git, mysql client, wget, zip, unzip, nodejs & npm
+* PHP Extensions installed: iconv mcrypt xsl intl zip pdo_mysql gd opcache imagick pcntl soap bcmath exif
+* Other utilities installed: composer, git, mysql client, wget, zip, unzip, nodejs & npm, yarn
 
 Credits
 -------
