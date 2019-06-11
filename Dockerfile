@@ -31,6 +31,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
         nodejs \
         yarn \
         default-jdk \
+        chromium \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) \
