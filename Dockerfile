@@ -32,6 +32,11 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
         yarn \
         default-jdk \
         chromium \
+    && curl -O https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz \
+    && tar xfvz libsodium-1.0.18.tar.gz \
+    && cd libsodium-1.0.18 \
+    && ./configure \
+    && make && make install \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) \
@@ -48,6 +53,7 @@ RUN docker-php-ext-install -j$(nproc) \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install imagick \
+    && pecl install -f libsodium \
     && docker-php-ext-enable imagick
 
 RUN echo "date.timezone=Europe/Rome" >> /usr/local/etc/php/conf.d/dev.ini \
