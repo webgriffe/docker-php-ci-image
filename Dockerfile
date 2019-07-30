@@ -13,7 +13,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
         libxslt-dev \
         libicu-dev \
         git \
-        mysql-client \
+        default-mysql-client \
         libmagickwand-dev \
         libmagickcore-dev \
         wget \
