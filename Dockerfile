@@ -1,6 +1,6 @@
 FROM php:7.1
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && mkdir -p /usr/share/man/man1 \
@@ -13,7 +13,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
         libxslt-dev \
         libicu-dev \
         git \
-        mysql-client \
+        default-mysql-client \
         libmagickwand-dev \
         libmagickcore-dev \
         wget \
@@ -32,6 +32,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
         yarn \
         default-jdk \
         chromium \
+        rsync \
     && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install -j$(nproc) \
