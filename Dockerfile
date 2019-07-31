@@ -32,6 +32,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
         yarn \
         default-jdk \
         chromium \
+        rsync \
     && curl -O https://download.libsodium.org/libsodium/releases/libsodium-1.0.18.tar.gz \
     && tar xfvz libsodium-1.0.18.tar.gz \
     && cd libsodium-1.0.18 \
