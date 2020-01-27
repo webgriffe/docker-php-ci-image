@@ -1,4 +1,4 @@
-FROM php:7.2
+FROM php:7.4
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
