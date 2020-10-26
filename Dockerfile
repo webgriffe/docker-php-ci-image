@@ -55,4 +55,4 @@ RUN docker-php-ext-install -j$(nproc) \
 RUN echo "date.timezone=Europe/Rome" >> /usr/local/etc/php/conf.d/dev.ini \
     && echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/dev.ini
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --1 --install-dir=/usr/local/bin --filename=composer
