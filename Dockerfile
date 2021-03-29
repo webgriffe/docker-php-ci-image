@@ -5,6 +5,8 @@ FROM php:${PHP_VERSION}
 ENV BUILD_PACKAGES="libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxslt-dev libicu-dev libmagickwand-dev libmagickcore-dev libnotify-dev libzip-dev"
 
 RUN set -eux; \
+
+    # System Dependencies
     curl -sL https://deb.nodesource.com/setup_10.x | bash -; \
     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -; \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list; \
@@ -36,10 +38,9 @@ RUN set -eux; \
     ./configure; \
     make && make install; \
     cd ..; \
-    rm -rf libsodium-1.0.18
+    rm -rf libsodium-1.0.18; \
 
-
-RUN set -eux; \
+    # PHP Extensions
     docker-php-ext-install -j$(nproc) \
         iconv \
         xsl \
@@ -56,12 +57,16 @@ RUN set -eux; \
     docker-php-ext-install -j$(nproc) gd; \
     pecl install imagick; \
     pecl install -f libsodium; \
-    docker-php-ext-enable imagick
+    docker-php-ext-enable imagick; \
 
-RUN set -eux; \
+    # PHP Configuration
     echo "date.timezone=Europe/Rome" >> /usr/local/etc/php/conf.d/dev.ini; \
-    echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/dev.ini
+    echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/dev.ini; \
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+    # Composer
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
 
-RUN apt-get remove --purge -y $BUILD_PACKAGES && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
+    # Cleanup
+    apt-get remove --purge -y $BUILD_PACKAGES; \
+    apt-get autoremove -y; \
+    rm -rf /var/lib/apt/lists/*
