@@ -2,7 +2,7 @@ ARG PHP_VERSION=5.6
 
 FROM php:${PHP_VERSION}
 
-ENV BUILD_PACKAGES="libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libxslt-dev libicu-dev libnotify-dev"
+ENV BUILD_PACKAGES="libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxslt-dev libicu-dev libnotify-dev"
 
 RUN set -eux; \
 
