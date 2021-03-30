@@ -2,7 +2,7 @@ ARG PHP_VERSION=7.2
 
 FROM php:${PHP_VERSION}
 
-ENV BUILD_PACKAGES="libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxslt-dev libicu-dev libmagickwand-dev libmagickcore-dev libnotify-dev libzip-dev"
+ENV BUILD_PACKAGES="libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxslt-dev libicu-dev libnotify-dev"
 
 RUN set -eux; \
 
@@ -14,6 +14,10 @@ RUN set -eux; \
     apt-get update; \
     apt-get install -y \
         ${BUILD_PACKAGES} \
+        libmagickwand-dev \
+        libmagickcore-dev \
+        libmagickwand-6.q16-6 \
+        libzip-dev \
         git \
         default-mysql-client \
         wget \
@@ -67,6 +71,8 @@ RUN set -eux; \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
 
     # Cleanup
+    pecl clear-cache; \
     apt-get remove --purge -y $BUILD_PACKAGES; \
     apt-get autoremove -y; \
+    apt-get clean; \
     rm -rf /var/lib/apt/lists/*
