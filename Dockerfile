@@ -16,7 +16,7 @@ RUN set -eux; \
         ${BUILD_PACKAGES} \
         libmagickwand-dev \
         libmagickcore-dev \
-        libmagickwand-6.q16-6 \
+        libmagickwand-6.q16-3 \
         libzip-dev \
         git \
         default-mysql-client \
