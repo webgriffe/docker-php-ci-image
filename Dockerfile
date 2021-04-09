@@ -2,7 +2,7 @@ ARG PHP_VERSION=7.2
 
 FROM php:${PHP_VERSION}
 
-ENV BUILD_PACKAGES="libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev libxslt-dev libicu-dev libnotify-dev"
+ENV BUILD_PACKAGES="libfreetype6-dev libjpeg62-turbo-dev libpng-dev libxslt-dev libicu-dev libnotify-dev"
 
 RUN set -eux; \
 
@@ -18,6 +18,7 @@ RUN set -eux; \
         libmagickcore-dev \
         libmagickwand-6.q16-6 \
         libzip-dev \
+        libmcrypt-dev \
         git \
         default-mysql-client \
         wget \
